@@ -26,7 +26,7 @@ function verificaColisao(){
   for (let i = 0; i < imagemCarros.length; i++){
     colisao = collideRectCircle(xCarros[i], yCarros[i], comprimentoCarro, alturaCarro, xAtor, yAtor, 15)
     if(colisao){voltaAtorParaPosicaoInicial();
-    somDaColisao.play();         
+    tocaSom(somDaColisao);         
     if(pontosMaiorQueZero()){           
     meusPontos -= 1;
      } 
@@ -40,14 +40,17 @@ function voltaAtorParaPosicaoInicial(){
 
 function incluiPontos(){
   textAlign(CENTER);
-  textSize(25)
-  fill(color(255, 240, 0))
+  textSize(25);
+  stroke(0);
+  strokeWeight(4);
+  fill(color(255, 240, 0));
   text(meusPontos, width / 5, 27);
+  noStroke();
 }
 
 function marcaPonto(){
   if (yAtor < 15){meusPontos += 1;
-  somDoPonto.play();                
+  tocaSom(somDoPonto);                
   voltaAtorParaPosicaoInicial();
   }
 }
