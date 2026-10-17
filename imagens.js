@@ -3,6 +3,7 @@ let imagemDoAtor;
 let imagemCarro;
 let imagemCarro2;
 let imagemCarro3;
+let imagemCarros;
 
 //Sons
 let somDaTrilha;
@@ -22,4 +23,14 @@ function preload(){
  somDaColisao = loadSound("sons/colidiu.mp3");
  somDoPonto = loadSound("sons/pontos.wav");
   
+}
+
+// Toca um som só se ele carregou; assim uma falha de áudio não trava o jogo
+function tocaSom(som, repetir = false) {
+  if (!som || !som.isLoaded()) return;
+  if (repetir) {
+    som.loop();
+  } else {
+    som.play();
+  }
 }
